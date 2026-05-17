@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ArtChain™ — Investor Presentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#070707;
+  --deep:#0d0d0d;
+  --surface:#131313;
+  --surface2:#1c1c1c;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.12);
+  --crimson:#C0152A;
+  --crimson-bright:#E8192F;
+  --crimson-dim:rgba(192,21,42,0.18);
+  --crimson-glow:rgba(192,21,42,0.07);
+  --white:#f2efe9;
+  --muted:rgba(242,239,233,0.5);
+  --muted2:rgba(242,239,233,0.28);
+  --display:'Outfit',sans-serif;
+  --body:'Outfit',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--black);color:var(--white);font-family:var(--body);font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 4rem;background:linear-gradient(to bottom,rgba(7,7,7,0.97) 0%,transparent 100%)}
+.nav-logo{font-family:var(--display);font-size:1.3rem;font-weight:600;letter-spacing:0.18em;color:var(--white);text-transform:uppercase;text-decoration:none}
+.nav-logo span{color:var(--crimson)}
+.tm{font-size:0.52em;vertical-align:super;font-weight:500;letter-spacing:0;margin-left:0.04em}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:var(--white)}
+.nav-badge{font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;border:1px solid var(--crimson);color:var(--crimson);padding:0.3rem 0.9rem;border-radius:2px}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 4rem 6rem;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;filter:brightness(0.28) saturate(0.6)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(7,7,7,1) 0%,rgba(7,7,7,0.6) 50%,rgba(7,7,7,0.2) 100%)}
+.hero-content{position:relative;z-index:1;max-width:900px}
+.hero-kicker{font-size:0.68rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--crimson);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.8rem}
+.hero-kicker::before{content:'';display:block;width:2rem;height:1px;background:var(--crimson)}
+.hero-title{font-family:var(--display);font-size:clamp(3.5rem,8vw,7.5rem);font-weight:700;line-height:1.02;letter-spacing:-0.01em;margin-bottom:2rem}
+.hero-title em{color:var(--muted)}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:560px;line-height:1.75;margin-bottom:3rem;font-weight:300}
+.hero-actions{display:flex;gap:1.5rem;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:0.6rem;background:var(--crimson);color:var(--white);font-family:var(--body);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem 2.2rem;border:none;cursor:pointer;transition:background 0.2s;text-decoration:none}
+.btn-primary:hover{background:var(--crimson-bright)}
+.btn-ghost{display:inline-flex;align-items:center;gap:0.6rem;background:transparent;color:var(--muted);font-family:var(--body);font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;padding:0.9rem 0;border:none;cursor:pointer;transition:color 0.2s;text-decoration:none;border-bottom:1px solid var(--border2)}
+.btn-ghost:hover{color:var(--white)}
+.hero-scroll{position:absolute;bottom:2rem;right:4rem;z-index:1;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted2);writing-mode:vertical-rl;display:flex;align-items:center;gap:0.8rem}
+.hero-scroll::after{content:'';display:block;width:1px;height:3rem;background:var(--muted2)}
+
+/* STAT BAR */
+.stat-bar{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:3rem 4rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{padding:1.5rem 2rem;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:0.6rem}
+.stat-item:last-child{border-right:none}
+.stat-item .stat-num{font-family:var(--display);font-size:3.2rem;font-weight:800;line-height:1;color:var(--crimson);letter-spacing:-0.02em}
+.stat-item .stat-num .stat-suffix{color:var(--white);font-weight:700}
+.stat-item .stat-label{font-family:var(--display);font-size:0.82rem;font-weight:500;letter-spacing:0.01em;text-transform:uppercase;color:var(--white);line-height:1.4}
+.stat-item .stat-context{font-size:0.75rem;font-weight:300;color:var(--muted);line-height:1.5;margin-top:0.2rem}
+
+/* SECTIONS general */
+section{padding:7rem 4rem}
+.section-label{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--crimson);margin-bottom:1.2rem;display:flex;align-items:center;gap:0.8rem}
+.section-label::before{content:'';display:block;width:1.5rem;height:1px;background:var(--crimson)}
+.section-title{font-family:var(--display);font-size:clamp(2.2rem,5vw,4rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem}
+.section-title em{color:var(--muted)}
+
+/* PROBLEM */
+.problem{background:var(--black)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;margin-top:4rem}
+.problem-image{position:relative;aspect-ratio:3/4;overflow:hidden}
+.problem-image img{width:100%;height:100%;object-fit:cover;filter:brightness(0.6) saturate(0.5);transition:transform 0.6s}
+.problem-image:hover img{transform:scale(1.03)}
+.problem-image::after{content:'';position:absolute;inset:0;border:1px solid var(--border2)}
+.problem-image .img-caption{position:absolute;bottom:1.5rem;left:1.5rem;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted2)}
+.problem-stats{display:flex;flex-direction:column;gap:2.5rem}
+.prob-stat{padding:2rem;border-left:1px solid var(--border2);position:relative;transition:border-color 0.3s}
+.prob-stat:hover{border-color:var(--crimson)}
+.prob-stat .num{font-family:var(--display);font-size:3.5rem;font-weight:700;color:var(--white);line-height:1}
+.prob-stat .num span{color:var(--crimson)}
+.prob-stat .label{font-size:0.82rem;color:var(--muted);margin-top:0.5rem;line-height:1.6}
+.problem-body{margin-top:2rem}
+.problem-body p{font-size:1rem;color:var(--muted);line-height:1.8;margin-bottom:1rem}
+.problem-body strong{color:var(--white);font-weight:400}
+
+/* OPPORTUNITY */
+.opportunity{background:var(--deep);border-top:1px solid var(--border)}
+.opp-inner{max-width:820px}
+.opp-quote{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600;line-height:1.35;color:var(--white);margin:2.5rem 0;padding-left:2.5rem;border-left:2px solid var(--crimson)}
+.opp-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.opp-card{background:var(--surface);border:1px solid var(--border);padding:2rem;position:relative;overflow:hidden;transition:border-color 0.3s}
+.opp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--crimson);transform:scaleX(0);transform-origin:left;transition:transform 0.4s}
+.opp-card:hover::before{transform:scaleX(1)}
+.opp-card:hover{border-color:var(--border2)}
+.opp-card .card-num{font-family:var(--display);font-size:0.75rem;letter-spacing:0.14em;color:var(--crimson);margin-bottom:1rem}
+.opp-card h3{font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:0.8rem;line-height:1.2}
+.opp-card p{font-size:0.82rem;color:var(--muted);line-height:1.7}
+
+/* PRODUCT */
+.product{background:var(--black);border-top:1px solid var(--border)}
+.product-intro{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;margin-bottom:5rem}
+.product-tagline{font-family:var(--display);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.2;color:var(--white)}
+.product-desc p{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:1rem}
+
+/* DEAL FLOW */
+.deal-flow{margin-top:3rem;position:relative}
+.deal-flow h3{font-family:var(--display);font-size:1.6rem;font-weight:700;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.deal-flow h3::after{content:'';flex:1;height:1px;background:var(--border)}
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.flow-steps::before{content:'';position:absolute;top:2rem;left:calc(12.5% + 1rem);right:calc(12.5% + 1rem);height:1px;background:linear-gradient(to right,var(--crimson),var(--crimson-dim),var(--crimson));z-index:0}
+.flow-step{padding:0 1.5rem;position:relative;z-index:1;cursor:pointer}
+.flow-step .step-dot{width:1rem;height:1rem;border-radius:50%;border:1px solid var(--crimson);background:var(--black);margin:0 auto 1.5rem;position:relative;transition:background 0.3s}
+.flow-step.active .step-dot,.flow-step:hover .step-dot{background:var(--crimson)}
+.flow-step .step-who{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:0.4rem;text-align:center}
+.flow-step .step-title{font-family:var(--display);font-size:1.1rem;font-weight:400;text-align:center;margin-bottom:0.5rem}
+.flow-step .step-desc{font-size:0.78rem;color:var(--muted);text-align:center;line-height:1.6}
+.flow-detail{margin-top:3rem;padding:2.5rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--crimson);min-height:140px;transition:all 0.3s}
+.flow-detail .detail-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:0.8rem}
+.flow-detail .detail-text{font-size:0.95rem;color:var(--muted);line-height:1.75}
+.flow-detail .detail-time{font-family:var(--display);font-size:2rem;color:var(--white);margin-top:1rem}
+
+/* BUSINESS MODEL */
+.bizmodel{background:var(--deep);border-top:1px solid var(--border)}
+.model-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.model-card{background:var(--surface);border:1px solid var(--border);padding:2.5rem;transition:border-color 0.3s;position:relative;overflow:hidden}
+.model-card:hover{border-color:var(--border2)}
+.model-card.featured{border-color:var(--crimson);grid-column:span 2}
+.model-card.featured::before{content:'Primary';position:absolute;top:1.5rem;right:1.5rem;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--crimson);border:1px solid var(--crimson);padding:0.2rem 0.6rem}
+.model-card.moat::before{content:'AI Data Moat'}
+.model-card .mc-icon{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:1rem}
+.model-card h3{font-family:var(--display);font-size:1.5rem;font-weight:600;margin-bottom:0.6rem}
+.model-card .mc-range{font-family:var(--display);font-size:2.8rem;font-weight:700;color:var(--white);line-height:1}
+.model-card .mc-range span{color:var(--crimson)}
+.model-card p{font-size:0.82rem;color:var(--muted);margin-top:0.8rem;line-height:1.7}
+
+/* REVENUE TABLE */
+.rev-table{width:100%;margin-top:3rem;border-collapse:collapse}
+.rev-table th{font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted2);padding:0.8rem 1.2rem;text-align:left;border-bottom:1px solid var(--border)}
+.rev-table td{padding:1rem 1.2rem;font-size:0.88rem;border-bottom:1px solid var(--border);color:var(--muted)}
+.rev-table tr:hover td{background:var(--surface);color:var(--white)}
+.rev-table td.highlight{color:var(--crimson);font-family:var(--display);font-size:1rem}
+
+/* ROADMAP */
+.roadmap{background:var(--black);border-top:1px solid var(--border)}
+.road-phases{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:4rem;position:relative}
+.road-phases::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--border2)}
+.road-phase{padding:3rem 1.7rem 2.4rem;border-right:1px solid var(--border);position:relative}
+.road-phase:last-child{border-right:none}
+.road-phase .phase-tag{position:absolute;top:0;left:1.7rem;transform:translateY(-50%);background:var(--black);padding:0 0.8rem;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson)}
+.road-phase .phase-year{font-family:var(--display);font-size:2.7rem;font-weight:700;color:var(--border2);line-height:1;margin-bottom:1rem}
+.road-phase h3{font-family:var(--display);font-size:1.25rem;font-weight:600;margin-bottom:0.35rem}
+.road-phase .phase-sub{font-size:0.72rem;color:var(--crimson);letter-spacing:0.04em;margin-bottom:1.2rem;line-height:1.4}
+.road-phase ul{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.road-phase ul li{font-size:0.78rem;color:var(--muted);display:flex;align-items:flex-start;gap:0.6rem;line-height:1.5}
+.road-phase ul li::before{content:'—';color:var(--crimson);flex-shrink:0;margin-top:0.05em}
+.road-phase.active .phase-year{color:var(--crimson)}
+
+/* MARKET */
+.market{background:var(--deep);border-top:1px solid var(--border)}
+.market-stages{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.market-stage{padding:2.5rem;background:var(--surface);border:1px solid var(--border);position:relative;overflow:hidden;transition:transform 0.3s,border-color 0.3s}
+.market-stage:hover{transform:translateY(-4px);border-color:var(--border2)}
+.market-stage .stage-label{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2);margin-bottom:1.5rem}
+.market-stage .stage-val{font-family:var(--display);font-size:3rem;font-weight:700;line-height:1;margin-bottom:0.5rem}
+.market-stage .stage-val span{color:var(--crimson)}
+.market-stage .stage-desc{font-size:0.78rem;color:var(--muted);line-height:1.6}
+.market-stage::before{content:attr(data-stage);position:absolute;bottom:-0.5rem;right:1rem;font-family:var(--display);font-size:6rem;font-weight:300;color:var(--border);line-height:1}
+
+/* TEAM */
+.team{background:var(--black);border-top:1px solid var(--border)}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.team-card{background:var(--surface);border:1px solid var(--border);transition:border-color 0.3s}
+.team-card:hover{border-color:var(--border2)}
+.team-card .tc-role{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:0.5rem}
+.team-card .tc-name{font-family:var(--display);font-size:1.5rem;font-weight:700;margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border)}
+.team-card .tc-body{padding:2rem}
+.team-card .tc-body p{font-size:0.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.team-card .tc-tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.team-card .tc-tags span{font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted2);border:1px solid var(--border);padding:0.25rem 0.65rem}
+
+/* ADVISORS */
+.advisors-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.adv-card{padding:2rem;border:1px solid var(--border);position:relative;transition:border-color 0.3s}
+.adv-card:hover{border-color:var(--border2)}
+.adv-card .adv-role{font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:0.8rem}
+.adv-card h4{font-family:var(--display);font-size:1.1rem;font-weight:600;margin-bottom:0.6rem}
+.adv-card p{font-size:0.78rem;color:var(--muted);line-height:1.6}
+
+/* ASK */
+.ask{background:var(--deep);border-top:1px solid var(--border)}
+.ask-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.ask-headline{font-family:var(--display);font-size:clamp(2rem,4vw,3.5rem);font-weight:800;line-height:1.15}
+.ask-headline em{color:var(--crimson)}
+.ask-amount{font-family:var(--display);font-size:5rem;font-weight:700;color:var(--white);line-height:1;margin:2rem 0 0.5rem}
+.ask-label{font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem}
+.use-of-funds{display:flex;flex-direction:column;gap:0}
+.fund-item{display:grid;grid-template-columns:3.5rem 1fr 3rem;align-items:center;gap:1.2rem;padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.fund-item:last-child{border-bottom:none}
+.fund-pct{font-family:var(--display);font-size:1.4rem;font-weight:300;color:var(--crimson)}
+.fund-label{font-size:0.82rem;color:var(--muted);line-height:1.4}
+.fund-bar-wrap{height:2px;background:var(--border);position:relative;overflow:hidden;grid-column:1/-1;margin-top:-0.5rem}
+.fund-bar{height:100%;background:var(--crimson);transition:width 1.2s cubic-bezier(0.4,0,0.2,1)}
+.milestones{margin-top:3rem}
+.milestones h3{font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:2rem}
+.milestone-list{display:flex;flex-direction:column;gap:0}
+.milestone{display:flex;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--border)}
+.milestone:last-child{border-bottom:none}
+.milestone .ms-q{font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--crimson);flex-shrink:0;width:2rem;padding-top:0.15rem}
+.milestone .ms-text{font-size:0.85rem;color:var(--muted);line-height:1.5}
+
+/* ANCHOR / POLLOCK */
+.anchor{background:var(--black);border-top:1px solid var(--border)}
+.anchor-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
+.anchor-image{position:relative;aspect-ratio:1;overflow:hidden}
+.anchor-image img{width:100%;height:100%;object-fit:cover;filter:brightness(0.5) saturate(0.4)}
+.anchor-image::before{content:'Anchor Pilot';position:absolute;top:1.5rem;left:1.5rem;z-index:1;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);background:var(--black);padding:0.3rem 0.8rem;border:1px solid var(--crimson)}
+.anchor-image::after{content:'';position:absolute;inset:0;border:1px solid var(--border2)}
+.anchor-content .anchor-name{font-family:var(--display);font-size:clamp(2.5rem,6vw,5rem);font-weight:800;line-height:1}
+.anchor-content .anchor-sub{font-family:var(--display);font-size:1.1rem;font-weight:300;color:var(--muted);margin:0.3rem 0 2rem}
+.anchor-points{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.anchor-point{display:flex;gap:1rem;align-items:flex-start;font-size:0.88rem;color:var(--muted);line-height:1.5}
+.anchor-point::before{content:'';display:block;width:4px;height:4px;border-radius:50%;background:var(--crimson);flex-shrink:0;margin-top:0.55em}
+
+/* CLOSE */
+.close-section{background:var(--crimson);position:relative;overflow:hidden;padding:8rem 4rem;text-align:center}
+.close-section::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=1800&q=80') center/cover no-repeat;opacity:0.08;mix-blend-mode:luminosity}
+.close-title{font-family:var(--display);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:800;line-height:1.1;color:#fff;position:relative;z-index:1;max-width:800px;margin:0 auto 2rem}
+.close-title em{font-style:italic}
+.close-sub{font-size:1rem;color:rgba(255,255,255,0.7);max-width:520px;margin:0 auto 3rem;position:relative;z-index:1;line-height:1.75}
+.close-contact{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap}
+.contact-item{font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.6)}
+.contact-item a{color:#fff;text-decoration:none}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--border);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
+.footer-logo{font-family:var(--display);font-size:1rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted2)}
+.footer-copy{font-size:0.68rem;letter-spacing:0.1em;color:var(--muted2)}
+
+/* ANIMATIONS */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity 0.75s cubic-bezier(0.4,0,0.2,1),transform 0.75s cubic-bezier(0.4,0,0.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}
+.reveal-delay-2{transition-delay:0.22s}
+.reveal-delay-3{transition-delay:0.34s}
+
+/* WHY NOW */
+.whynow{background:var(--deep);border-top:1px solid var(--border)}
+.whynow-inner{max-width:860px}
+.whynow-sub{font-size:1.05rem;color:var(--white);font-weight:400;line-height:1.7;max-width:680px;margin-bottom:2rem}
+.whynow-body p{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:1.1rem;max-width:680px}
+.whynow-body strong{color:var(--white);font-weight:500}
+.agent-prompt{font-family:var(--display);font-size:clamp(1.3rem,2.6vw,1.8rem);font-weight:500;line-height:1.4;color:var(--white);margin:2rem 0;padding:1.6rem 2rem;border-left:2px solid var(--crimson);background:var(--surface)}
+.whynow-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3.5rem}
+.whynow-close{font-family:var(--display);font-size:clamp(1.4rem,3vw,2rem);font-weight:600;line-height:1.35;color:var(--white);margin-top:4rem;max-width:760px}
+.whynow-close span{color:var(--crimson)}
+
+/* PIPELINE DIAGRAM */
+.pipeline{margin-top:4rem;padding:2.8rem 2.5rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--crimson)}
+.pipeline-label{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--crimson);margin-bottom:1.8rem}
+.pipeline-track{display:flex;flex-wrap:wrap;align-items:stretch;gap:0.5rem}
+.pipe-node{flex:1;min-width:118px;background:var(--surface2);border:1px solid var(--border2);padding:0.9rem 0.8rem;text-align:center;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:0.74rem;font-weight:500;letter-spacing:0.02em;line-height:1.35;color:var(--white);transition:border-color 0.3s}
+.pipe-node:hover{border-color:var(--crimson)}
+.pipe-node.terminal{background:var(--crimson-dim);border-color:var(--crimson)}
+.pipe-arrow{display:flex;align-items:center;color:var(--crimson);font-size:0.9rem;flex-shrink:0}
+.pipeline-caption{font-size:0.88rem;color:var(--muted);line-height:1.7;margin-top:1.8rem;max-width:680px}
+.pipeline-caption strong{color:var(--white);font-weight:500}
+
+/* OBJECT FLOW (platform subsection) */
+.objflow{margin-top:4.5rem}
+.objflow h3{font-family:var(--display);font-size:1.6rem;font-weight:700;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.objflow h3::after{content:'';flex:1;height:1px;background:var(--border)}
+.objflow-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.2rem}
+.objflow-step{background:var(--surface);border:1px solid var(--border);border-top:2px solid var(--crimson);padding:1.6rem 1.3rem;transition:border-color 0.3s}
+.objflow-step:hover{border-color:var(--border2)}
+.objflow-step .of-num{font-family:var(--display);font-size:0.72rem;letter-spacing:0.14em;color:var(--crimson);margin-bottom:0.7rem}
+.objflow-step h4{font-family:var(--display);font-size:1rem;font-weight:600;margin-bottom:0.5rem;line-height:1.25}
+.objflow-step p{font-size:0.76rem;color:var(--muted);line-height:1.6}
+
+@media(max-width:900px){
+  nav{padding:1rem 2rem}
+  .nav-links{display:none}
+  section,.hero,.stat-bar{padding-left:2rem;padding-right:2rem}
+  .hero{padding-bottom:4rem}
+  .problem-grid,.product-intro,.anchor-inner,.ask-inner,.team-grid,.opp-cards,.model-grid,.market-stages,.road-phases,.advisors-row,.flow-steps,.whynow-cards,.objflow-steps{grid-template-columns:1fr}
+  .model-card.featured{grid-column:span 1}
+  .flow-steps::before{display:none}
+  .stat-bar{grid-template-columns:repeat(2,1fr)}
+  .pipe-arrow{transform:rotate(90deg)}
+  .pipe-node{min-width:100%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Art<span>Chain</span><span class="tm">™</span></a>
+  <ul class="nav-links">
+    <li><a href="#whynow">Why Now</a></li>
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#product">Platform</a></li>
+    <li><a href="#model">Model</a></li>
+    <li><a href="#team">Team</a></li>
+    <li><a href="#ask">The Ask</a></li>
+  </ul>
+  <span class="nav-badge">Investor Preview · 2026</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=1800&q=85" alt="Abstract art">
+  </div>
+  <div class="hero-content">
+    <div class="hero-kicker">The Infrastructure Play</div>
+    <h1 class="hero-title">
+      The Verified IP Layer<br>Agentic AI<br>Needs.
+    </h1>
+    <p class="hero-sub">ArtChain<span class="tm">™</span> turns cultural IP into verified, AI-readable knowledge objects — connecting estates, buyers, curators, and AI agents through provenance, rights data, expert metadata, and transaction-ready licensing infrastructure.</p>
+    <div class="hero-actions">
+      <a href="#whynow" class="btn-primary">Read the Deck ↓</a>
+      <a href="#ask" class="btn-ghost">Jump to the Ask →</a>
+      <a href="#whynow" class="btn-ghost">View Agentic AI Thesis →</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="stat-item reveal">
+    <div class="stat-label">Time to clear a license</div>
+    <div class="stat-num"><span class="count" data-target="90">0</span><span class="stat-suffix">+ days</span></div>
+    <div class="stat-context">Average across major art IP deals globally</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-1">
+    <div class="stat-label">Global cultural IP market</div>
+    <div class="stat-num">$<span class="count" data-target="50">0</span><span class="stat-suffix">B</span></div>
+    <div class="stat-context">With zero standardized transaction infrastructure</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-2">
+    <div class="stat-label">Rights-aware AI rails</div>
+    <div class="stat-num"><span class="count" data-target="0">0</span></div>
+    <div class="stat-context">No verified infrastructure exists for cultural IP or AI access</div>
+  </div>
+  <div class="stat-item reveal reveal-delay-3">
+    <div class="stat-label">Revenue left on the table</div>
+    <div class="stat-num">$<span class="count" data-target="100">0</span><span class="stat-suffix">K+</span></div>
+    <div class="stat-context">Per estate per year from untracked or unlicensed usage</div>
+  </div>
+</div>
+
+<!-- WHY NOW -->
+<section class="whynow" id="whynow">
+  <div class="section-label">01 — Why Now</div>
+  <div class="whynow-inner">
+    <h2 class="section-title reveal">Agentic AI cannot license<br>culture without verified knowledge.</h2>
+    <p class="whynow-sub reveal">AI agents are beginning to search, recommend, negotiate, and transact. But in cultural IP, they cannot act safely unless the underlying data is verified, legally defensible, and rights-aware.</p>
+    <div class="whynow-body reveal">
+      <p>The next wave of AI will not just generate content. It will act on behalf of buyers, brands, museums, educators, collectors, and media companies. A buyer will not manually browse thousands of artworks or cold-email estates. They will ask an AI agent:</p>
+    </div>
+    <blockquote class="agent-prompt reveal">"Find me rights-cleared cultural IP for an immersive exhibition, educational program, luxury capsule, or media campaign."</blockquote>
+    <div class="whynow-body reveal">
+      <p>But today, cultural IP data is fragmented across estates, PDFs, catalogs, archives, emails, curators, and legal documents. Standard AI models can describe art, but they cannot reliably prove ownership, verify provenance, identify usage rights, or recommend a legally safe licensing path.</p>
+      <p><strong>ArtChain<span class="tm">™</span> solves the missing layer: we convert cultural IP into verified and validated (V&amp;V), AI-readable knowledge objects that can be accessed by RAG tools, AI agents, museums, estates, and buyers.</strong></p>
+    </div>
+  </div>
+
+  <div class="whynow-cards">
+    <div class="opp-card reveal">
+      <div class="card-num">01 /</div>
+      <h3>Verification &amp; Validation</h3>
+      <p>Verification confirms the record is built right — ownership, provenance, rights status, and source documents. Validation confirms it is the right thing — expert-reviewed, estate-approved, and fit for real use.</p>
+    </div>
+    <div class="opp-card reveal reveal-delay-1">
+      <div class="card-num">02 /</div>
+      <h3>Agent-Ready Objects</h3>
+      <p>Domain experts chunk cultural objects into canonical knowledge units, embed them semantically, and place them into vector stores.</p>
+    </div>
+    <div class="opp-card reveal reveal-delay-2">
+      <div class="card-num">03 /</div>
+      <h3>Rights-Aware Retrieval</h3>
+      <p>AI agents and RAG tools retrieve trusted answers instead of hallucinated or legally risky information.</p>
+    </div>
+  </div>
+
+  <div class="pipeline reveal">
+    <div class="pipeline-label">The Verified Bridge</div>
+    <div class="pipeline-track">
+      <div class="pipe-node">Cultural Object</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">Verified Ownership</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">Expert Chunking</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">Semantic Embedding</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">Vector Store / RAG Target</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node">AI Agent · Buyer · Museum</div>
+      <div class="pipe-arrow">→</div>
+      <div class="pipe-node terminal">License Transaction</div>
+    </div>
+    <p class="pipeline-caption"><strong>ArtChain<span class="tm">™</span> is the verified bridge between cultural IP owners and the AI agents that will search, evaluate, and license creative assets.</strong></p>
+  </div>
+
+  <h3 class="whynow-close reveal">The future of cultural IP will be agentic. <span>The winners will own the verified knowledge layer.</span></h3>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-label">02 — The Problem</div>
+  <h2 class="section-title reveal">Cultural IP is valuable,<br>but invisible to AI agents.</h2>
+  <div class="problem-grid">
+    <div class="problem-image reveal">
+      <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=900&q=80" alt="Artist estate">
+      <div class="img-caption">The pipeline is broken</div>
+    </div>
+    <div class="problem-stats">
+      <div class="prob-stat reveal">
+        <div class="num"><span>90</span>+ Days</div>
+        <div class="label">Time to clear a major art IP license — emails, lawyers, redlines, and waiting.</div>
+      </div>
+      <div class="prob-stat reveal reveal-delay-1">
+        <div class="num">$<span>100K</span>+</div>
+        <div class="label">Revenue estates may lose every year from untracked or unlicensed usage.</div>
+      </div>
+      <div class="prob-stat reveal reveal-delay-2">
+        <div class="num"><span>Zero</span></div>
+        <div class="label">Standardized rights-aware infrastructure for cultural IP and AI access exists today.</div>
+      </div>
+      <div class="problem-body reveal reveal-delay-3">
+        <p>Art IP licensing is still slow, fragmented, and relationship-driven. Estates, collectors, museums, and buyers rely on emails, PDFs, lawyers, introductions, and manual verification. That was already inefficient.</p>
+        <p><strong>Now agentic AI makes the problem urgent.</strong></p>
+        <p>AI agents can search, recommend, and route opportunities at scale — but they cannot safely act on cultural IP without verified ownership, provenance, rights status, licensing restrictions, and expert context. Without that foundation, AI creates hallucination risk, copyright risk, and commercial uncertainty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPPORTUNITY -->
+<section class="opportunity" id="opportunity">
+  <div class="section-label">03 — The Opportunity</div>
+  <div class="opp-inner">
+    <h2 class="section-title reveal">A cultural IP market with<br>no verified AI access layer.</h2>
+    <blockquote class="opp-quote reveal">"The cultural estate that isn't on a verified platform is about to become a liability. The one that is becomes a perpetual revenue source."</blockquote>
+    <p class="reveal" style="color:var(--muted);font-size:0.95rem;line-height:1.8;max-width:640px">Three forces are converging simultaneously — and the window to establish the standard is open right now.</p>
+    <div class="opp-cards">
+      <div class="opp-card reveal">
+        <div class="card-num">01 /</div>
+        <h3>Agentic AI Is Arriving</h3>
+        <p>AI agents will search, evaluate, recommend, and transact IP. But they need verified RAG targets — not scraped internet guesses.</p>
+      </div>
+      <div class="opp-card reveal reveal-delay-1">
+        <div class="card-num">02 /</div>
+        <h3>Estates Need Control</h3>
+        <p>Artist families and estates want new revenue — but not at the cost of legacy, misuse, or inaccurate AI representation.</p>
+      </div>
+      <div class="opp-card reveal reveal-delay-2">
+        <div class="card-num">03 /</div>
+        <h3>The Standard Is Still Open</h3>
+        <p>Getty, Bridgeman, and Shutterstock serve stock and image licensing. None operate as verified, estate-backed, rights-aware infrastructure for cultural IP objects.</p>
+      </div>
+    </div>
+    <h3 class="whynow-close reveal" style="margin-top:3.5rem">The opportunity is not only to license art faster. <span>It is to become the trusted cultural IP layer that AI agents rely on.</span></h3>
+  </div>
+</section>
+
+<!-- PRODUCT -->
+<section class="product" id="product">
+  <div class="section-label">04 — The Platform</div>
+  <div class="product-intro">
+    <div>
+      <h2 class="section-title reveal">Two portals.<br>One verified transaction engine.<br>Legal-ready by design.</h2>
+    </div>
+    <div class="product-desc reveal">
+      <p>ArtChain<span class="tm">™</span> connects artist estates and IP buyers on a shared platform. Estates control their rights. Buyers get legal clearance in days. Every deal is stamped, certified, and permanently auditable.</p>
+      <p>Blockchain is the quiet trust layer — not the product. The product is speed, control, and verified proof.</p>
+    </div>
+  </div>
+
+  <!-- DEAL FLOW INTERACTIVE -->
+  <div class="deal-flow reveal">
+    <h3>How a deal moves through the platform</h3>
+    <div class="flow-steps" id="flowSteps">
+      <div class="flow-step active" data-step="0" onclick="setStep(0)">
+        <div class="step-dot"></div>
+        <div class="step-who">Buyer</div>
+        <div class="step-title">Browse & Request</div>
+        <div class="step-desc">Finds IP in catalog, submits use case, territory, and duration</div>
+      </div>
+      <div class="flow-step" data-step="1" onclick="setStep(1)">
+        <div class="step-dot"></div>
+        <div class="step-who">ArtChain<span class="tm">™</span></div>
+        <div class="step-title">Review & Contract</div>
+        <div class="step-desc">Platform checks rights rules and auto-fills legal template</div>
+      </div>
+      <div class="flow-step" data-step="2" onclick="setStep(2)">
+        <div class="step-dot"></div>
+        <div class="step-who">Estate</div>
+        <div class="step-title">Approve or Deny</div>
+        <div class="step-desc">One-click approval in the estate portal. Full veto retained</div>
+      </div>
+      <div class="flow-step" data-step="3" onclick="setStep(3)">
+        <div class="step-dot"></div>
+        <div class="step-who">ArtChain<span class="tm">™</span></div>
+        <div class="step-title">Certify & Close</div>
+        <div class="step-desc">Blockchain certificate issued. Royalties tracked automatically</div>
+      </div>
+    </div>
+    <div class="flow-detail" id="flowDetail">
+      <div class="detail-label" id="detailLabel">Step 1 — Buyer Portal</div>
+      <div class="detail-text" id="detailText">The buyer logs into the catalog, finds a Pollock visual asset available for licensing, and submits a request specifying product type, territory, and duration. No phone calls. No introductions needed.</div>
+      <div class="detail-time" id="detailTime">Day 1</div>
+    </div>
+  </div>
+
+  <!-- OBJECT FLOW: artwork to verified AI object -->
+  <div class="objflow reveal">
+    <h3>From artwork to verified AI object</h3>
+    <div class="objflow-steps">
+      <div class="objflow-step">
+        <div class="of-num">01</div>
+        <h4>Verify Ownership</h4>
+        <p>Estate, collector, or rights holder provides provenance, proof of ownership, licensing authority, and source documents.</p>
+      </div>
+      <div class="objflow-step">
+        <div class="of-num">02</div>
+        <h4>Expert Chunking</h4>
+        <p>Curators and art historians break each work into canonical knowledge chunks: artist, period, medium, themes, exhibition history, rights, and use restrictions.</p>
+      </div>
+      <div class="objflow-step">
+        <div class="of-num">03</div>
+        <h4>Semantic Embedding</h4>
+        <p>Each chunk receives context, not just metadata — why the work matters, how it can be interpreted, and what uses are allowed.</p>
+      </div>
+      <div class="objflow-step">
+        <div class="of-num">04</div>
+        <h4>Vector Store + RAG Target</h4>
+        <p>Verified chunks are vectorized and placed into a vector store, becoming retrievable targets for RAG tools and AI agents.</p>
+      </div>
+      <div class="objflow-step">
+        <div class="of-num">05</div>
+        <h4>Rights-Aware Licensing</h4>
+        <p>Buyers and AI agents search, request, license, and transact through verified rules instead of uncertain email chains.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ANCHOR PILOT -->
+<section class="anchor" id="anchor">
+  <div class="section-label">05 — Anchor Pilot</div>
+  <div class="anchor-inner">
+    <div class="anchor-image reveal">
+      <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?w=900&q=80" alt="Abstract expressionist art">
+    </div>
+    <div class="anchor-content reveal">
+      <div class="anchor-name">Jackson<br>Pollock</div>
+      <div class="anchor-sub">Anchor IP · American Abstract Expressionism</div>
+      <p style="font-size:0.9rem;color:var(--muted);line-height:1.8;margin-bottom:1.5rem">Most startups begin with zero supply, theoretical users, and no trust. ArtChain<span class="tm">™</span> begins with direct access to one of the world's most licensable artist estates — before a single line of code ships.</p>
+      <div class="anchor-points">
+        <div class="anchor-point">Direct estate access — real supply before day one</div>
+        <div class="anchor-point">One of the most globally recognized American art brands</div>
+        <div class="anchor-point">Consistent demand from museums, publishers, and luxury brands</div>
+        <div class="anchor-point">Basquiat and Warhol-adjacent networks as Year 2 expansion</div>
+        <div class="anchor-point">Proves the rails and the verified object infrastructure — every estate after becomes a replication, not a reinvention.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:4.5rem;padding:3rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--crimson)">
+    <div class="section-label" style="margin-bottom:1.2rem">Pilot Objective</div>
+    <p style="font-family:var(--display);font-size:1.15rem;font-weight:500;color:var(--white);line-height:1.6;max-width:720px;margin-bottom:1.8rem">Use 2–3 Pollock-related works or rights-cleared assets to prove the full ArtChain<span class="tm">™</span> workflow — verified cultural IP object infrastructure, not just licensing rails.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.7rem 2.5rem">
+      <div class="anchor-point" style="margin:0">Verify ownership and provenance</div>
+      <div class="anchor-point" style="margin:0">Structure rights and licensing rules</div>
+      <div class="anchor-point" style="margin:0">Capture estate-approved descriptions</div>
+      <div class="anchor-point" style="margin:0">Add expert and curatorial metadata</div>
+      <div class="anchor-point" style="margin:0">Chunk objects into canonical knowledge units</div>
+      <div class="anchor-point" style="margin:0">Embed and vectorize the verified data</div>
+      <div class="anchor-point" style="margin:0">Make it retrievable through a RAG demo</div>
+      <div class="anchor-point" style="margin:0">Test buyer-side licensing and compensation tracking</div>
+    </div>
+    <blockquote class="agent-prompt" style="margin-bottom:0.8rem">"Build a children's educational program around Jackson Pollock's work using rights-cleared images, verified context, and estate-approved descriptions."</blockquote>
+    <p style="font-size:0.88rem;color:var(--muted);line-height:1.7;max-width:680px">A museum assistant, educator, or curator could prompt this — and ArtChain<span class="tm">™</span> would retrieve verified knowledge instead of generic, legally risky AI output.</p>
+  </div>
+</section>
+
+<!-- BUSINESS MODEL -->
+<section class="bizmodel" id="model">
+  <div class="section-label">06 — Business Model</div>
+  <h2 class="section-title reveal">Four revenue streams today.<br>One AI data moat tomorrow.</h2>
+  <div class="model-grid">
+    <div class="model-card featured reveal">
+      <div class="mc-icon">Transaction Commission</div>
+      <h3>10–20% of every deal</h3>
+      <div class="mc-range"><span>$3,750</span>–$30,000</div>
+      <p>Per transaction processed through the platform. A $25K museum capsule deal generates $3,750. A $150K monograph license generates up to $30,000. These stack across every estate, every year.</p>
+    </div>
+    <div class="model-card reveal reveal-delay-1">
+      <div class="mc-icon">Estate Onboarding Fee</div>
+      <h3>One-time setup</h3>
+      <div class="mc-range">$<span>25K</span>–$75K</div>
+      <p>Per estate. Covers rights schema, object records, provenance review, and metadata structuring. Paid before the first transaction ever closes.</p>
+    </div>
+    <div class="model-card reveal reveal-delay-2">
+      <div class="mc-icon">Annual Platform Fee</div>
+      <h3>Recurring access</h3>
+      <div class="mc-range">$<span>10K</span>–$30K</div>
+      <p>Per estate per year. Dashboard, catalog management, royalty tracking, and support. Pure recurring revenue that grows as the estate catalog grows.</p>
+    </div>
+    <div class="model-card featured moat reveal">
+      <div class="mc-icon">Verified Data / RAG Access</div>
+      <h3>Usage-based retrieval</h3>
+      <div class="mc-range"><span>Per-query</span> &amp; licensing</div>
+      <p>Usage-based fees when AI agents, institutions, or approved buyers retrieve verified cultural IP knowledge. Brought forward from a distant future layer into a core revenue line — it is the long-term moat, and no one is building it yet.</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-size:1.3rem;font-weight:600;margin-top:4rem;margin-bottom:1.5rem" class="reveal">Sample deal economics</h3>
+  <table class="rev-table reveal">
+    <thead>
+      <tr>
+        <th>Deal Type</th><th>Buyer</th><th>License Fee</th><th>ArtChain<span class="tm">™</span> Take</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Museum capsule</td><td>Museum retail</td><td>$25,000</td><td class="highlight">$3,750</td></tr>
+      <tr><td>Art monograph</td><td>Publisher</td><td>$60,000</td><td class="highlight">$6,000–$12,000</td></tr>
+      <tr><td>Documentary use</td><td>Streaming media</td><td>$40,000</td><td class="highlight">$4,800–$8,000</td></tr>
+      <tr><td>Premium silk drop</td><td>Luxury brand</td><td>$35,000</td><td class="highlight">$5,250</td></tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:5rem;padding:3rem;background:var(--surface);border:1px solid var(--border);border-left:2px solid var(--crimson)" class="reveal">
+    <div class="section-label" style="margin-bottom:1rem">How The Data Moat Scales</div>
+    <h3 style="font-family:var(--display);font-size:1.8rem;font-weight:700;margin-bottom:1rem">From manual pilots to automated RAG access</h3>
+    <p style="font-size:0.9rem;color:var(--muted);max-width:680px;line-height:1.8">In the early stage, verified data access is tested manually through pilots. At scale, it becomes automated API/RAG access, micro-transaction retrieval, and rights-aware data licensing. Once ArtChain<span class="tm">™</span> holds a library of verified, provenance-stamped cultural IP objects, this becomes a high-margin, high-volume revenue line — the platform's long-term moat, and no one is building it yet.</p>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="roadmap" id="roadmap">
+  <div class="section-label">07 — Roadmap</div>
+  <h2 class="section-title reveal">Anchor. Validate.<br>Expand. Dominate.</h2>
+  <div class="road-phases">
+    <div class="road-phase active reveal">
+      <div class="phase-tag">Now</div>
+      <div class="phase-year">Now</div>
+      <h3>Anchor Pilot</h3>
+      <div class="phase-sub">Prove the verified object workflow</div>
+      <ul>
+        <li>2–3 Pollock-related object records structured</li>
+        <li>Provenance and rights schema completed</li>
+        <li>Expert metadata and canonical chunks created</li>
+        <li>Vector store / RAG demo live</li>
+        <li>First museum-style use case tested</li>
+        <li>First verified certificate issued</li>
+      </ul>
+    </div>
+    <div class="road-phase reveal reveal-delay-1">
+      <div class="phase-tag">Year 1</div>
+      <div class="phase-year">Y1</div>
+      <h3>Transaction Validation</h3>
+      <div class="phase-sub">Prove buyers will pay</div>
+      <ul>
+        <li>Pollock pilot live</li>
+        <li>3–5 institutional buyers onboarded</li>
+        <li>5–10 licensing transactions closed</li>
+        <li>Estate dashboard operational</li>
+        <li>Usage / attribution tracking tested</li>
+        <li>Revenue: $150K–$400K</li>
+      </ul>
+    </div>
+    <div class="road-phase reveal reveal-delay-2">
+      <div class="phase-tag">Year 2</div>
+      <div class="phase-year">Y2</div>
+      <h3>Multi-Estate Expansion</h3>
+      <div class="phase-sub">Prove repeatability</div>
+      <ul>
+        <li>2–3 adjacent estates onboarded</li>
+        <li>Multi-estate rights catalog live</li>
+        <li>API / RAG access prototype expanded</li>
+        <li>Licensing flow crosses $1M</li>
+        <li>Repeatable onboarding playbook documented</li>
+      </ul>
+    </div>
+    <div class="road-phase reveal reveal-delay-3">
+      <div class="phase-tag">Year 3+</div>
+      <div class="phase-year">Y3+</div>
+      <h3>Agentic AI Infrastructure</h3>
+      <div class="phase-sub">Become the verified cultural IP layer</div>
+      <ul>
+        <li>Top estates and institutions onboarded</li>
+        <li>Agent-accessible cultural IP object store</li>
+        <li>Verified RAG targets at scale</li>
+        <li>AI / data licensing activated</li>
+        <li>ArtChain<span class="tm">™</span> becomes a standard rail</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- MARKET POTENTIAL -->
+<section class="market" id="market">
+  <div class="section-label">08 — Market Potential</div>
+  <h2 class="section-title reveal">Three stages.<br>One trajectory.</h2>
+  <div class="market-stages">
+    <div class="market-stage reveal" data-stage="01">
+      <div class="stage-label">Stage 1 — Rights &amp; Licensing Infrastructure</div>
+      <div class="stage-val">$20M–<span>$60M</span></div>
+      <div class="stage-desc">5–10 estates transacting through verified rails. $1M–$4M revenue. Proof that estates and buyers will transact — a repeatable model established.</div>
+    </div>
+    <div class="market-stage reveal reveal-delay-1" data-stage="02">
+      <div class="stage-label">Stage 2 — Multi-Estate Cultural IP Platform</div>
+      <div class="stage-val">$200M–<span>$500M</span></div>
+      <div class="stage-desc">50+ estates. $100M+ transaction volume. $15M–$25M revenue. Network effects grow as more rights libraries and buyers join.</div>
+    </div>
+    <div class="market-stage reveal reveal-delay-2" data-stage="03">
+      <div class="stage-label">Stage 3 — Agentic AI Cultural IP Infrastructure</div>
+      <div class="stage-val"><span>$1B</span>+</div>
+      <div class="stage-desc">Verified cultural IP becomes searchable, retrievable, and licensable by AI agents, RAG systems, and institutional buyers. ArtChain<span class="tm">™</span> is the standard rail.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-label">09 — The Team</div>
+  <h2 class="section-title reveal">The relationships, capital,<br>and execution to win this market.</h2>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="tc-body">
+        <div class="tc-role">Co-Founder · Supply, Estates &amp; Provenance</div>
+        <div class="tc-name">Zakarie Man</div>
+        <p>Zak is the reason ArtChain<span class="tm">™</span> starts with Pollock instead of a pitch deck. He gives ArtChain<span class="tm">™</span> access to the hardest part of the market: trusted estate relationships, provenance conversations, and the cultural gatekeepers who control whether verified IP can enter the system. His network spans art-world family offices and Guggenheim-level institutional connections.</p>
+        <div class="tc-tags">
+          <span>Estate Access</span><span>Provenance</span><span>Artist Families</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-1">
+      <div class="tc-body">
+        <div class="tc-role">Co-Founder · Commercial Demand &amp; Buyer Pipeline</div>
+        <div class="tc-name">Vicky Luo</div>
+        <p>Vicky is the demand engine. While Zak brings the verified IP supply, Vicky converts the catalog into actual licensing demand — building and closing the buyer pipeline across museums, publishers, luxury brands, education, and cultural product companies. Her background is in business development and commercial strategy, and she gets ArtChain<span class="tm">™</span> into those conversations.</p>
+        <div class="tc-tags">
+          <span>Buyer Pipeline</span><span>Brand Partnerships</span><span>Commercial Growth</span>
+        </div>
+      </div>
+    </div>
+    <div class="team-card reveal reveal-delay-2">
+      <div class="tc-body">
+        <div class="tc-role">Co-Founder · Product, Operations &amp; AI Infrastructure</div>
+        <div class="tc-name">Michael Yu</div>
+        <p>Michael translates estate workflows into platform logic: object records, buyer onboarding, rights schemas, AI-ready metadata, and the operational system needed to scale from one estate to many. He owns product development and the execution infrastructure that keeps ArtChain<span class="tm">™</span> running.</p>
+        <div class="tc-tags">
+          <span>Product</span><span>Operations</span><span>AI Infrastructure</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="advisors-row">
+    <div class="adv-card reveal">
+      <div class="adv-role">Advisor · Investor Relations</div>
+      <h4>To Be Announced</h4>
+      <p>Senior capital markets operator with a direct network of family offices, cultural investors, and early-stage institutional funds. Supports fundraising strategy, investor introductions, and term negotiation toward Series A.</p>
+    </div>
+    <div class="adv-card reveal reveal-delay-1">
+      <div class="adv-role">Advisor · Technical</div>
+      <h4>To Be Announced</h4>
+      <p>Blockchain infrastructure and SaaS platform architect. Owns certificate issuance engine reliability, audit layer architecture, and the data infrastructure that enables AI licensing at scale.</p>
+    </div>
+    <div class="adv-card reveal reveal-delay-2">
+      <div class="adv-role">Advisor · Legal IP Counsel</div>
+      <h4>To Be Announced</h4>
+      <p>IP attorney specializing in art, estate, and licensing law. Ensures every contract template, rights schema, and certificate structure is legally defensible across jurisdictions.</p>
+    </div>
+  </div>
+</section>
+
+<!-- THE ASK -->
+<section class="ask" id="ask">
+  <div class="section-label">10 — The Ask</div>
+  <div class="ask-inner">
+    <div>
+      <h2 class="ask-headline reveal">$1M to prove verified cultural IP<br>can become <em>agentic AI infrastructure.</em></h2>
+      <div class="ask-amount reveal">$1M</div>
+      <div class="ask-label reveal">Seed Round · 2025</div>
+      <div class="use-of-funds" id="fundBars">
+        <div class="fund-item reveal">
+          <div class="fund-pct">35%</div>
+          <div class="fund-label">Product &amp; Proof Layer<br><span style="font-size:0.72rem;color:var(--muted2)">MVP platform, certificate engine, estate dashboard, object store, verified retrieval demo</span></div>
+          <div class="fund-bar-wrap"><div class="fund-bar" style="width:0" data-width="35%"></div></div>
+        </div>
+        <div class="fund-item reveal reveal-delay-1">
+          <div class="fund-pct">20%</div>
+          <div class="fund-label">Pollock Pilot<br><span style="font-size:0.72rem;color:var(--muted2)">Rights schema, estate workflow, first 2–3 verified object records, first live licensing use cases</span></div>
+          <div class="fund-bar-wrap"><div class="fund-bar" style="width:0" data-width="20%"></div></div>
+        </div>
+        <div class="fund-item reveal reveal-delay-2">
+          <div class="fund-pct">20%</div>
+          <div class="fund-label">Buyer Development<br><span style="font-size:0.72rem;color:var(--muted2)">3–5 qualified buyers across museum, publishing, luxury, education, immersive media</span></div>
+          <div class="fund-bar-wrap"><div class="fund-bar" style="width:0" data-width="20%"></div></div>
+        </div>
+        <div class="fund-item reveal reveal-delay-3">
+          <div class="fund-pct">15%</div>
+          <div class="fund-label">Legal &amp; IP Framework<br><span style="font-size:0.72rem;color:var(--muted2)">Licensing templates, rights attestation, provenance review, certificate terms, compliance</span></div>
+          <div class="fund-bar-wrap"><div class="fund-bar" style="width:0" data-width="15%"></div></div>
+        </div>
+        <div class="fund-item reveal">
+          <div class="fund-pct">10%</div>
+          <div class="fund-label">Data Architecture<br><span style="font-size:0.72rem;color:var(--muted2)">Canonical object records, expert metadata, semantic chunks, vector store, RAG target layer</span></div>
+          <div class="fund-bar-wrap"><div class="fund-bar" style="width:0" data-width="10%"></div></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="milestones reveal">
+        <h3>12-Month Milestones</h3>
+        <div class="milestone-list">
+          <div class="milestone">
+            <div class="ms-q">Q1</div>
+            <div class="ms-text">Pollock rights schema, legal framework, and first verified object records live.</div>
+          </div>
+          <div class="milestone">
+            <div class="ms-q">Q2</div>
+            <div class="ms-text">Object store and RAG retrieval demo operational. First certified licensing transaction issued.</div>
+          </div>
+          <div class="milestone">
+            <div class="ms-q">Q3</div>
+            <div class="ms-text">3–5 institutional buyers onboarded. Estate dashboard and attribution / usage tracking tested.</div>
+          </div>
+          <div class="milestone">
+            <div class="ms-q">Q4</div>
+            <div class="ms-text">Repeatable estate onboarding model documented. Second estate pipeline open. Series A narrative prepared around agentic AI cultural IP infrastructure.</div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:3rem;padding:2.5rem;background:var(--surface);border:1px solid var(--border)" class="reveal">
+        <p style="font-family:var(--display);font-size:1.1rem;font-weight:500;line-height:1.5;color:var(--white)">"Most platforms start with a problem and hope to find supply. ArtChain<span class="tm">™</span> starts with supply and builds the infrastructure around it."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSE -->
+<div class="close-section">
+  <h2 class="close-title">The standard before anyone realizes<br>there needs to be one.</h2>
+  <p class="close-sub">The category is open. The timing is right. The Pollock relationship is in place. ArtChain<span class="tm">™</span> is the verified cultural IP layer that agentic AI needs — and no one has built it yet.</p>
+  <div class="close-contact">
+    <span class="contact-item">artchain.io</span>
+    <span class="contact-item">Confidential · Investor Preview · 2026</span>
+  </div>
+</div>
+
+<footer>
+  <span class="footer-logo">ArtChain<span class="tm">™</span></span>
+  <span class="footer-copy">© 2025 ArtChain<span class="tm">™</span>. Confidential. All rights reserved.</span>
+</footer>
+
+<script>
+// INTERSECTION OBSERVER — reveal
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      // animate fund bars
+      const bar = e.target.querySelector('.fund-bar');
+      if (bar) {
+        setTimeout(() => { bar.style.width = bar.dataset.width; }, 200);
+      }
+    }
+  });
+}, { threshold: 0.12 });
+revealEls.forEach(el => observer.observe(el));
+
+// COUNTER ANIMATION
+function animateCount(el) {
+  const target = +el.dataset.target;
+  const dur = 1400;
+  const start = performance.now();
+  function step(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target);
+    if (p < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.count').forEach(animateCount);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stat-bar').forEach(el => counterObs.observe(el));
+
+// DEAL FLOW STEPPER
+const steps = [
+  {
+    label: 'Step 1 — Buyer Portal',
+    text: 'The buyer logs into the catalog, finds a Pollock visual asset available for licensing, and submits a request specifying product type, territory, and duration. No phone calls. No introductions needed.',
+    time: 'Day 1'
+  },
+  {
+    label: 'Step 2 — ArtChain™ Platform',
+    text: 'The platform cross-references the request against the estate\'s pre-set rights rules and auto-fills a legal contract template. No lawyer required for intake. The contract is ready in minutes.',
+    time: 'Day 1–2'
+  },
+  {
+    label: 'Step 3 — Estate Portal',
+    text: 'The Pollock estate receives the request in their dashboard. They see the buyer identity, use case, territory, and exact contract terms — and approve or deny with one click. Full veto retained at all times.',
+    time: 'Day 2–3'
+  },
+  {
+    label: 'Step 4 — Transaction Engine',
+    text: 'Payment clears. ArtChain™ issues a blockchain-stamped certificate — permanent, auditable proof of clearance. Royalties are tracked automatically. The deal is done. ArtChain™ takes its commission.',
+    time: '72 hrs total'
+  }
+];
+
+function setStep(i) {
+  document.querySelectorAll('.flow-step').forEach((s, idx) => {
+    s.classList.toggle('active', idx === i);
+  });
+  const d = steps[i];
+  document.getElementById('detailLabel').textContent = d.label;
+  document.getElementById('detailText').textContent = d.text;
+  document.getElementById('detailTime').textContent = d.time;
+  document.getElementById('flowDetail').style.borderLeftColor = 'var(--crimson)';
+}
+
+// Auto-cycle deal flow
+let stepIdx = 0;
+setInterval(() => {
+  stepIdx = (stepIdx + 1) % 4;
+  setStep(stepIdx);
+}, 3500);
+
+// FUND BARS on visible
+const fundObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.fund-bar').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.width; }, i * 120 + 200);
+      });
+      fundObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('#fundBars').forEach(el => fundObs.observe(el));
+</script>
+</body>
+</html>
